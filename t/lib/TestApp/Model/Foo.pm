@@ -10,7 +10,7 @@ with 'Catalyst::Model::Role::RunAfterRequest';
 
 sub demonstrate {
     my $self = shift;
-    $self->run_after_request(
+    $self->_run_after_request(
         sub { push( @data, "one" ); },
         sub { push( @data, "two" ); },
         sub { push @data, ref shift },

@@ -58,7 +58,7 @@ Catalyst::Plugin::RunAfterRequest - run code after the response has been sent.
     sub some_method {
         my $self = shift;
 
-        $self->run_after_request(
+        $self->_run_after_request(
             sub { $self->do_something_slow(); },
             sub { $self->do_something_else_as_well(); }
         );
@@ -78,7 +78,7 @@ C<run_after_request> and adding a closure to it.
 
 =head2 run_after_request
 
-    $c->run_after_request(
+    $c->run_after_request(            # '_run_after_request' in model
         sub { 
             # create preview of uploaded file and store to remote server
             # etc, etc
@@ -90,6 +90,10 @@ C<run_after_request> and adding a closure to it.
 
 Takes one or more anonymous subs and adds them to a list to be run after the
 response has been sent back to the client.
+
+The method name has an underscore at the start in the model to indicate that it
+is a private method. Really you should only be calling this method from within
+the model and not from other code.
 
 =head1 AUTHOR
 

@@ -12,7 +12,7 @@ sub build_per_context_instance {
     bless( { %$self, _context => $c }, ref($self) );
 }
 
-sub run_after_request {
+sub _run_after_request {
     my $self = shift;
     $self->_context->run_after_request(@_);
 }
