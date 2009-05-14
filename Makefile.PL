@@ -13,7 +13,9 @@ requires 'Catalyst::Test';
 requires 'Moose';
 requires 'Moose::Role';
 requires 'MRO::Compat';
-requires 'Test::More';
+
+test_requires 'Test::More';
+test_requires 'Module::Find';
 
 WriteAll;
 
