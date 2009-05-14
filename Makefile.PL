@@ -6,8 +6,14 @@ name('Catalyst-Plugin-RunAfterRequest');
 
 all_from('lib/Catalyst/Plugin/RunAfterRequest.pm');
 
-requires 'Catalyst::Runtime';
 requires 'Catalyst::Component::InstancePerContext';
+requires 'Catalyst::Controller';
+requires 'Catalyst::Runtime';
+requires 'Catalyst::Test';
 requires 'Moose';
+requires 'Moose::Role';
+requires 'MRO::Compat';
+requires 'Test::More';
 
 WriteAll;
+

@@ -1,15 +1,29 @@
 use strict;
 use warnings;
 use lib 't/lib';
-use Test::More qw(no_plan);
+use Test::More tests => 4;
 use Catalyst::Test 'TestApp';
 
-my $res = request('/foo/demonstrate');
+{
+    my $res = request('/foo/demonstrate_model');
 
-ok($res->is_success, 'Test request is a success');
+    ok( $res->is_success, 'Test request is a success' );
 
-is_deeply(
-  \@TestApp::Model::Foo::data,
-  [ qw(one two) ],
-  'Data saved ok'
-);
+    is_deeply(
+        \@TestApp::Model::Foo::data,    #
+        [qw( one two TestApp )],
+        'Data saved ok from model'
+    );
+}
+
+{
+    my $res = request('/foo/demonstrate_plugin');
+
+    ok( $res->is_success, 'Test request is a success' );
+
+    is_deeply(
+        \@TestApp::Controller::Foo::data,
+        [qw( alpha beta TestApp )],    #
+        'Data saved ok from controller'
+    );
+}
