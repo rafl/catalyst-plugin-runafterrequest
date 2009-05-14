@@ -1,7 +1,7 @@
 use strict;
 use warnings;
 use lib 't/lib';
-use Test::More tests => 4;
+use Test::More tests => 7;
 use Catalyst::Test 'TestApp';
 
 {
@@ -14,6 +14,20 @@ use Catalyst::Test 'TestApp';
         [qw( one two TestApp )],
         'Data saved ok from model'
     );
+}
+
+{
+    my $res = request('/foo/demonstrate_model_with_around');
+
+    ok( $res->is_success, 'Test request is a success' );
+
+    is_deeply(
+        \@TestApp::Model::Bar::data,    #
+        [qw( one two TestApp )],
+        'Data saved ok from model'
+    );
+
+    ok $TestApp::Model::Bar::BPCI_GOT_RUN, "ran local build context method";
 }
 
 {
