@@ -15,7 +15,6 @@ requires 'Moose::Role';
 requires 'MRO::Compat';
 
 test_requires 'Test::More';
-test_requires 'Module::Find';
 
 WriteAll;
 
