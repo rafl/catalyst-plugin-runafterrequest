@@ -1,0 +1,19 @@
+inc/Module/Install.pm
+inc/Module/Install/Base.pm
+inc/Module/Install/Can.pm
+inc/Module/Install/Fetch.pm
+inc/Module/Install/Makefile.pm
+inc/Module/Install/Metadata.pm
+inc/Module/Install/Win32.pm
+inc/Module/Install/WriteAll.pm
+lib/Catalyst/Model/Role/RunAfterRequest.pm
+lib/Catalyst/Plugin/RunAfterRequest.pm
+Makefile.PL
+MANIFEST			This list of files
+META.yml
+t/00load_and_sane.t
+t/01basic.t
+t/lib/TestApp.pm
+t/lib/TestApp/Controller/Foo.pm
+t/lib/TestApp/Model/Bar.pm
+t/lib/TestApp/Model/Foo.pm
