@@ -4,7 +4,7 @@ use strict;
 use warnings;
 use MRO::Compat;
 
-our $VERSION = '1.000000';
+our $VERSION = '0.01';
 
 sub run_after_request {
     my $self = shift;

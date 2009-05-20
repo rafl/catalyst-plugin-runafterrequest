@@ -16,8 +16,6 @@ around build_per_context_instance => sub {
     my $self = shift;
     my $c    = shift;
 
-    warn "in C::M::R::RAR->build_per_context_instance";
-
     $self = $self->$orig( $c, @_ );
 
     bless( { %$self, _context => $c }, ref($self) );
