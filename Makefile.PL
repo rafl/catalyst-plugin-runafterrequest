@@ -16,5 +16,7 @@ requires 'MRO::Compat';
 
 test_requires 'Test::More';
 
+resources repository => 'http://dev.catalyst.perl.org/repos/Catalyst/Catalyst-Plugin-RunAfterRequest/trunk/';
+
 WriteAll;
 
