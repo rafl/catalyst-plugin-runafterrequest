@@ -8,9 +8,8 @@ use namespace::autoclean;
 
 our $VERSION = '0.02';
 
-has _callbacks => (
+has callbacks => (
     metaclass => 'Collection::Array',
-    is        => 'ro',
     isa       => ArrayRef[CodeRef],
     default   => sub { [] },
     provides  => {
