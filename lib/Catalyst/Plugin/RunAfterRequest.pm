@@ -16,17 +16,20 @@ has _callbacks => (
     provides  => {
         push => 'run_after_request',
     },
+    curries   => {
+        map => {
+            _run_code_after_request => sub {
+                my ($self, $body) = @_;
+                $self->$body(sub { $self->$_ });
+            },
+        },
+    },
 );
 
 after finalize => sub {
     my $self = shift;
     $self->_run_code_after_request;
 };
-
-sub _run_code_after_request {
-    my $self = shift;
-    $_->($self) for @{ $self->_callbacks };
-}
 
 =head1 NAME
 
