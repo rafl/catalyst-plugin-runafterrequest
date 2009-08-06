@@ -8,7 +8,7 @@ all_from('lib/Catalyst/Plugin/RunAfterRequest.pm');
 
 requires 'Catalyst::Component::InstancePerContext';
 requires 'Catalyst::Controller';
-requires 'Catalyst::Runtime';
+requires 'Catalyst::Runtime', '5.80004';
 requires 'Catalyst::Test';
 requires 'Moose';
 requires 'Moose::Role';
