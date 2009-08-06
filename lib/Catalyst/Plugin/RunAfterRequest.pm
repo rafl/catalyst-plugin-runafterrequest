@@ -6,7 +6,7 @@ use MooseX::Types::Moose qw/ArrayRef CodeRef/;
 
 use namespace::autoclean;
 
-our $VERSION = '0.02';
+our $VERSION = '0.03';
 
 has callbacks => (
     metaclass => 'Collection::Array',
