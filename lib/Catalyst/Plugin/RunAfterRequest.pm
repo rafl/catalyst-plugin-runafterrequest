@@ -2,31 +2,26 @@ package Catalyst::Plugin::RunAfterRequest;
 # ABSTRACT: run code after the response has been sent.
 
 use Moose::Role;
-use MooseX::AttributeHelpers;
 use MooseX::Types::Moose qw/ArrayRef CodeRef/;
 
 use namespace::autoclean;
 
 has callbacks => (
-    metaclass => 'Collection::Array',
-    isa       => ArrayRef[CodeRef],
-    default   => sub { [] },
-    provides  => {
-        push => 'run_after_request',
-    },
-    curries   => {
-        map => {
-            _run_code_after_request => sub {
-                my ($self, $body) = @_;
-                $self->$body(sub { $self->$_ });
-            },
-        },
+    traits  => ['Array'],
+    isa     => ArrayRef[CodeRef],
+    default => sub { [] },
+    handles => {
+        run_after_request => 'push',
+        _callbacks        => 'elements',
     },
 );
 
 after finalize => sub {
     my $self = shift;
-    $self->_run_code_after_request;
+
+    for my $callback ($self->_callbacks) {
+        $self->$callback;
+    }
 };
 
 =head1 SYNOPSIS
