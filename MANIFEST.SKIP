@@ -1,9 +1,0 @@
-^\.
-\.bak$
-\.swp$
-^Makefile$
-^Makefile.old$
-^Catalyst-Plugin-RunAfterRequest-
-^cover_db\b
-^blib\b
-^pm_to_blib$

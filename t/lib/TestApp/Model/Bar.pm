@@ -14,7 +14,7 @@ sub build_per_context_instance {
     my $self=shift;
 
     $BPCI_GOT_RUN = 1;
-    
+
     return $self;
 }
 

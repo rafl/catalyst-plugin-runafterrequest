@@ -1,12 +1,11 @@
 package Catalyst::Plugin::RunAfterRequest;
+# ABSTRACT: run code after the response has been sent.
 
 use Moose::Role;
 use MooseX::AttributeHelpers;
 use MooseX::Types::Moose qw/ArrayRef CodeRef/;
 
 use namespace::autoclean;
-
-our $VERSION = '0.03';
 
 has callbacks => (
     metaclass => 'Collection::Array',
@@ -29,10 +28,6 @@ after finalize => sub {
     my $self = shift;
     $self->_run_code_after_request;
 };
-
-=head1 NAME
-
-Catalyst::Plugin::RunAfterRequest - run code after the response has been sent.
 
 =head1 SYNOPSIS
 
@@ -82,12 +77,10 @@ logging, or something that will take a long time and would delay the response.
 This module provides a conveniant way to do that by simply calling
 C<run_after_request> and adding a closure to it.
 
-=head1 METHODS
-
-=head2 run_after_request
+=method run_after_request
 
     $c->run_after_request(            # '_run_after_request' in model
-        sub { 
+        sub {
             # create preview of uploaded file and store to remote server
             # etc, etc
         },
@@ -102,17 +95,6 @@ response has been sent back to the client.
 The method name has an underscore at the start in the model to indicate that it
 is a private method. Really you should only be calling this method from within
 the model and not from other code.
-
-=head1 AUTHOR
-
-Matt S Trout (mst) <mst@shadowcat.co.uk>
-
-Edmund von der Burg (evdb) <evdb@ecclestoad.co.uk>
-
-=head1 LICENSE
-
-This library is free software, you can redistribute it and/or modify it under
-the same terms as Perl itself.
 
 =cut
 
